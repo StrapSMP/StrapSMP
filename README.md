@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Strap SMP</title>
 
-  <!-- Minecraft-style font -->
+  <!-- Minecraft font -->
   <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
 
   <style>
@@ -22,12 +22,10 @@
 
     h1 {
       font-size: 50px;
-      margin-bottom: 10px;
       text-shadow: 0 0 10px red;
     }
 
     .tagline {
-      font-size: 18px;
       color: #ffcccc;
     }
 
@@ -43,7 +41,6 @@
 
     .ip {
       font-size: 22px;
-      font-weight: bold;
       color: #ff4d4d;
     }
 
@@ -53,7 +50,6 @@
       border: none;
       background: #ff0000;
       color: white;
-      font-size: 16px;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Minecraft', Arial, sans-serif;
@@ -67,14 +63,8 @@
       background: #5865F2;
     }
 
-    .discord-btn:hover {
-      background: #4752c4;
-    }
-
     footer {
       margin-top: 30px;
-      padding: 20px;
-      font-size: 14px;
       color: #aaa;
     }
   </style>
@@ -82,52 +72,51 @@
 
 <body>
 
-  <header>
-    <h1>⚔️ Strap SMP</h1>
-    <p class="tagline">Lifesteal Minecraft Server (Aternos Hosted)</p>
-  </header>
+<header>
+  <h1>⚔️ Strap SMP</h1>
+  <p class="tagline">Lifesteal Minecraft Server (Aternos Hosted)</p>
+</header>
 
-  <div class="box">
-    <h2>🎮 Server IP</h2>
-    <p class="ip" id="serverIP">YOUR-ATERNOS-IP.aternos.me</p>
-    <button onclick="copyIP()">Copy IP</button>
-  </div>
+<div class="box">
+  <h2>🎮 Server IP</h2>
+  <p class="ip" id="serverIP">YOUR-ATERNOS-IP.aternos.me</p>
+  <button onclick="copyIP()">Copy IP</button>
+</div>
 
-  <div class="box">
-    <h2>📡 Server Status</h2>
-    <p id="status">Checking...</p>
-  </div>
+<div class="box">
+  <h2>📡 Server Status</h2>
+  <p id="status">Checking...</p>
+</div>
 
-  <div class="box">
-    <h2>💬 Join our Discord</h2>
-    <a href="https://discord.gg/YOURCODE" target="_blank">
-      <button class="discord-btn">Join Discord</button>
-    </a>
-  </div>
+<div class="box">
+  <h2>💬 Join our Discord</h2>
+  <a href="https://discord.gg/YOURCODE" target="_blank">
+    <button onclick="playClick()" class="discord-btn">Join Discord</button>
+  </a>
+</div>
 
-  <div class="box">
-    <h2>🔥 About</h2>
-    <p>
-      Strap SMP is a Lifesteal server where killing players gives you hearts ❤️  
-      and dying makes you lose them. Fight, survive, and dominate!
-    </p>
-  </div>
+<div class="box">
+  <h2>🔥 About</h2>
+  <p>
+    Strap SMP is a Lifesteal server where killing players gives hearts ❤️  
+    and dying removes them. Survive and dominate!
+  </p>
+</div>
 
-  <div class="box">
-    <h2>📜 Rules</h2>
-    <p>
-      • No hacking<br>
-      • Respect players<br>
-      • No spawn griefing
-    </p>
-  </div>
+<footer>
+  © 2026 Strap SMP
+</footer>
 
-  <footer>
-    © 2026 Strap SMP | Not affiliated with Mojang
-  </footer>
+<!-- Sound effect -->
+<audio id="clickSound" src="https://www.myinstants.com/media/sounds/minecraft_click.mp3"></audio>
 
 <script>
+  function playClick() {
+    document.getElementById("clickSound").play();
+  }
+
   function copyIP() {
+    playClick();
     const ip = document.getElementById("serverIP").innerText;
     navigator.clipboard.writeText(ip);
     alert("Copied: " + ip);
