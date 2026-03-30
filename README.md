@@ -1,16 +1,149 @@
-## Hi there 👋
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Strap SMP</title>
 
-<!--
-**StrapSMP/StrapSMP** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+  <!-- Minecraft-style font -->
+  <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
 
-Here are some ideas to get you started:
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Minecraft', Arial, sans-serif;
+      background: linear-gradient(to bottom, #2b0000, #8b0000, #000000);
+      color: white;
+      text-align: center;
+    }
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+    header {
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 50px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px red;
+    }
+
+    .tagline {
+      font-size: 18px;
+      color: #ffcccc;
+    }
+
+    .box {
+      background: rgba(0,0,0,0.7);
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 15px rgba(255,0,0,0.5);
+    }
+
+    .ip {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff4d4d;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      background: #ff0000;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Minecraft', Arial, sans-serif;
+    }
+
+    button:hover {
+      background: #cc0000;
+    }
+
+    .discord-btn {
+      background: #5865F2;
+    }
+
+    .discord-btn:hover {
+      background: #4752c4;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 20px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>⚔️ Strap SMP</h1>
+    <p class="tagline">Lifesteal Minecraft Server (Aternos Hosted)</p>
+  </header>
+
+  <div class="box">
+    <h2>🎮 Server IP</h2>
+    <p class="ip" id="serverIP">YOUR-ATERNOS-IP.aternos.me</p>
+    <button onclick="copyIP()">Copy IP</button>
+  </div>
+
+  <div class="box">
+    <h2>📡 Server Status</h2>
+    <p id="status">Checking...</p>
+  </div>
+
+  <div class="box">
+    <h2>💬 Join our Discord</h2>
+    <a href="https://discord.gg/YOURCODE" target="_blank">
+      <button class="discord-btn">Join Discord</button>
+    </a>
+  </div>
+
+  <div class="box">
+    <h2>🔥 About</h2>
+    <p>
+      Strap SMP is a Lifesteal server where killing players gives you hearts ❤️  
+      and dying makes you lose them. Fight, survive, and dominate!
+    </p>
+  </div>
+
+  <div class="box">
+    <h2>📜 Rules</h2>
+    <p>
+      • No hacking<br>
+      • Respect players<br>
+      • No spawn griefing
+    </p>
+  </div>
+
+  <footer>
+    © 2026 Strap SMP | Not affiliated with Mojang
+  </footer>
+
+<script>
+  function copyIP() {
+    const ip = document.getElementById("serverIP").innerText;
+    navigator.clipboard.writeText(ip);
+    alert("Copied: " + ip);
+  }
+
+  fetch("https://api.mcsrvstat.us/2/YOUR-ATERNOS-IP.aternos.me")
+    .then(res => res.json())
+    .then(data => {
+      const status = document.getElementById("status");
+      if (data.online) {
+        status.innerHTML = "🟢 Online (" + data.players.online + "/" + data.players.max + ")";
+      } else {
+        status.innerHTML = "🔴 Offline";
+      }
+    });
+</script>
+
+</body>
+</html>
